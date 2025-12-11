@@ -1,0 +1,57 @@
+{
+  "name": "@openpharma-org/financial-mcp-server",
+  "version": "0.1.0",
+  "description": "Comprehensive MCP server for financial intelligence with 30 methods: Yahoo Finance stock data, FRED economic indicators (12 methods), advanced analytics, news sentiment analysis, and geographic economic mapping. Professional-grade financial analysis platform.",
+  "main": "src/index.js",
+  "bin": {
+    "financial-mcp-server": "src/index.js"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "node src/index.js",
+    "test": "node src/dev-test.js"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "yahoo-finance",
+    "finance",
+    "stock-data",
+    "financial-data",
+    "company-profiles",
+    "stock-analysis",
+    "model-context-protocol",
+    "fred",
+    "federal-reserve",
+    "economic-data",
+    "financial-intelligence",
+    "economic-indicators",
+    "geographic-data",
+    "sentiment-analysis"
+  ],
+  "author": "Joan <uh-joan>",
+  "license": "MIT",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openpharma-org/financial-mcp-server"
+  },
+  "homepage": "https://github.com/openpharma-org/financial-mcp-server",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "axios": "^1.10.0",
+    "cheerio": "^1.1.2",
+    "sentiment": "^5.0.2"
+  },
+  "optionalDependencies": {
+    "puppeteer": "^22.15.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
