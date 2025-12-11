@@ -1,7 +1,5 @@
 # Financial Intelligence MCP Server 🚀
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 A comprehensive **Model Context Protocol (MCP) server** that provides professional-grade access to financial and economic data. This server transforms AI assistants into powerful financial analysis platforms with access to Yahoo Finance data, Federal Reserve Economic Data (FRED), and advanced analytics capabilities.
 
 ## 🌟 **World-Class Features**
@@ -43,11 +41,6 @@ A comprehensive **Model Context Protocol (MCP) server** that provides profession
 
 ### Installation
 
-```bash
-git clone https://github.com/openpharma-org/financials-mcp.git
-cd financial-mcp-server
-npm install
-```
 
 ### MCP Configuration
 
@@ -58,7 +51,7 @@ Add to your Claude Desktop or MCP client:
   "mcpServers": {
     "financial-intelligence": {
       "command": "npx",
-      "args": ["-y", "@openpharma-org/financials-mcp"],
+      "args": ["-y", "path-to-your-financial-mcp-server"],
       "env": {
         "FRED_API_KEY": "your-fred-api-key-here"
       }
@@ -467,35 +460,6 @@ export FRED_API_KEY="your-api-key-here"
 
 ---
 
-## 🎛️ **Configuration**
-
-### MCP Client Setup
-```json
-{
-  "financial-intelligence": {
-    "command": "npx",
-    "args": ["-y", "@openpharma-org/financials-mcp"],
-    "env": {
-      "FRED_API_KEY": "YOUR_FRED_API_KEY"
-    }
-  }
-}
-```
-
-### Local Development
-```bash
-# Test specific methods
-npm test TSLA stock_profile
-npm test "" economic_indicators
-npm test "GDP" fred_series_data
-
-# Test with search parameters
-npm test "inflation" fred_series_search
-npm test "AAPL,MSFT" stock_correlation
-```
-
----
-
 ## 📊 **Data Coverage**
 
 ### Stock Markets
@@ -514,35 +478,6 @@ npm test "AAPL,MSFT" stock_correlation
 - **Performance**: Returns, volatility, beta
 - **Fundamentals**: Revenue, earnings, cash flow
 - **Market Data**: Price, volume, market cap
-
----
-
-## 🛠️ **Development**
-
-### Requirements
-- Node.js ≥ 18.0.0
-- npm or yarn
-
-### Project Structure
-```
-financial-mcp-server/
-├── src/
-│   ├── index.js           # MCP server implementation
-│   ├── financial-api.js   # Core financial data extraction (6,500+ lines)
-│   └── dev-test.js        # Testing utilities
-├── FRED_API_SETUP.md      # FRED configuration guide
-├── package.json
-└── README.md
-```
-
-### Testing
-```bash
-# Test all major features
-npm test AAPL stock_profile
-npm test "" economic_indicators  
-npm test "unemployment" fred_series_search
-npm test "AAPL,MSFT" stock_correlation
-```
 
 ---
 
@@ -574,28 +509,4 @@ npm test "AAPL,MSFT" stock_correlation
 
 ---
 
-## 📝 **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 **Acknowledgments**
-
-- **Data Sources**: [Yahoo Finance](https://finance.yahoo.com/), [Federal Reserve Economic Data (FRED)](https://fred.stlouisfed.org/)
-- **Framework**: [Model Context Protocol](https://modelcontextprotocol.io/)
-- **Libraries**: [Axios](https://axios-http.com/), [Cheerio](https://cheerio.js.org/), [Sentiment](https://www.npmjs.com/package/sentiment)
-
----
-
-## 🆘 **Support**
-
-- 🐛 [Report Issues](https://github.com/openpharma-org/financials-mcp/issues)
-- 📖 [Documentation](https://github.com/openpharma-org/financials-mcp)
-- 💬 [Discussions](https://github.com/openpharma-org/financials-mcp/discussions)
-
----
-
 **⚠️ Disclaimer**: This is an unofficial tool. Please respect data providers' terms of service. Data is for informational purposes only and should not be used as the sole basis for investment decisions.
-
-**🚀 Built for the future of AI-powered financial analysis.**
