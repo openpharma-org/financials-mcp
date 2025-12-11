@@ -44,7 +44,7 @@ A comprehensive **Model Context Protocol (MCP) server** that provides profession
 ### Installation
 
 ```bash
-git clone https://github.com/uh-joan/financial-mcp-server.git
+git clone https://github.com/openpharma-org/financials-mcp.git
 cd financial-mcp-server
 npm install
 ```
@@ -58,7 +58,7 @@ Add to your Claude Desktop or MCP client:
   "mcpServers": {
     "financial-intelligence": {
       "command": "npx",
-      "args": ["-y", "@uh-joan/financial-mcp-server"],
+      "args": ["-y", "@openpharma-org/financials-mcp"],
       "env": {
         "FRED_API_KEY": "your-fred-api-key-here"
       }
@@ -474,7 +474,7 @@ export FRED_API_KEY="your-api-key-here"
 {
   "financial-intelligence": {
     "command": "npx",
-    "args": ["-y", "@uh-joan/financial-mcp-server"],
+    "args": ["-y", "@openpharma-org/financials-mcp"],
     "env": {
       "FRED_API_KEY": "ce541416c997b515065c3770bae2be21"
     }
@@ -590,9 +590,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 **Support**
 
-- 🐛 [Report Issues](https://github.com/uh-joan/financial-mcp-server/issues)
-- 📖 [Documentation](https://github.com/uh-joan/financial-mcp-server)
-- 💬 [Discussions](https://github.com/uh-joan/financial-mcp-server/discussions)
+- 🐛 [Report Issues](https://github.com/openpharma-org/financials-mcp/issues)
+- 📖 [Documentation](https://github.com/openpharma-org/financials-mcp)
+- 💬 [Discussions](https://github.com/openpharma-org/financials-mcp/discussions)
 
 ---
 
