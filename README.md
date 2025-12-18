@@ -1,51 +1,15 @@
-# Unofficial Financial Intelligence MCP Server 🚀
+# Unofficial Financial MCP Server
 
-A comprehensive **Model Context Protocol (MCP) server** that provides professional-grade access to financial and economic data. This server transforms AI assistants into powerful financial analysis platforms with access to Yahoo Finance data, Federal Reserve Economic Data (FRED), and advanced analytics capabilities.
+A comprehensive **Model Context Protocol (MCP) server** that provides professional-grade access to financial and economic data through Yahoo Finance and Federal Reserve Economic Data (FRED).
 
-## **World-Class Features**
-
-### **Yahoo Finance Integration**
-- **Real-time stock data** with pricing, financials, and estimates
-- **Company intelligence** including profiles, news, and ESG metrics
-- **Advanced analytics** with peer comparison and technical indicators
-- **Revenue analysis** by segment and geography
-- **Executive information** and corporate governance data
-
-### **Federal Reserve Economic Data (FRED)** - 12 Methods
-- **800,000+ economic series** with professional discovery tools
-- **Real-time economic monitoring** with automated updates
-- **Data source transparency** and quality assessment
-- **Deep metadata analysis** with relationships mapping
-- **Historical data revisions** and vintage analysis
-- **Geographic economic data** with mapping visualization
-- **Economic calendar** with release schedules
-- **Tag-based discovery** system for precise data finding
-
-### **Advanced Analytics**
-- **Portfolio correlation analysis** for risk management
-- **Stock screening** with multi-criteria discovery
-- **Sentiment analysis** on financial news
-- **Technical analysis** with moving averages and indicators
-- **Economic health scoring** with recession indicators
-- **Yield curve analysis** and monetary policy insights
-
-### **Production-Ready**
-- **Rate limiting** and intelligent caching
-- **Robust error handling** with fallback systems
-- **Professional data formatting** (JSON + Markdown)
-- **MCP protocol compliance** for seamless AI integration
-
----
-
-## Usage
-
+## Configuration
 
 ```json
 {
   "mcpServers": {
-    "financial-intelligence": {
-      "command": "npx",
-      "args": ["-y", "path-to-your-financial-mcp-server"],
+    "financial-mcp-server": {
+      "command": "node",
+      "args": ["/path/to/financial-mcp-server/build/index.js"],
       "env": {
         "FRED_API_KEY": "your-fred-api-key-here"
       }
@@ -58,80 +22,115 @@ A comprehensive **Model Context Protocol (MCP) server** that provides profession
 
 ---
 
-## **Environment Setup**
+## Available Methods
 
-### FRED API Key (Recommended)
-Get your free API key from [FRED](https://fred.stlouisfed.org/docs/api/api_key.html):
+### Stock Analysis (11 methods)
 
-```bash
-export FRED_API_KEY="your-api-key-here"
+| Method | Description | Parameters |
+|--------|-------------|------------|
+| `stock_profile` | Company details, industry, employees, business summary | `symbol`: ticker (e.g., "AAPL") |
+| `stock_summary` | Key metrics: market cap, P/E, EPS, beta, enterprise value | `symbol`: ticker |
+| `stock_estimates` | Analyst EPS/revenue estimates, price targets | `symbol`: ticker |
+| `stock_pricing` | Real-time pricing, volume, daily ranges | `symbol`: ticker |
+| `stock_financials` | Cash flow, income highlights, balance sheet ratios | `symbol`: ticker |
+| `stock_revenue_breakdown` | Revenue by business segment & geography | `symbol`: ticker |
+| `stock_earnings_history` | Historical EPS trends & earnings analysis | `symbol`: ticker |
+| `stock_recommendations` | Analyst rating trends & consensus changes | `symbol`: ticker |
+| `stock_esg` | Environmental, Social, Governance scores | `symbol`: ticker |
+| `stock_dividends` | Dividend history, yield, payout ratios | `symbol`: ticker |
+| `stock_technicals` | Technical indicators, moving averages, volatility | `symbol`: ticker |
+
+### Advanced Analytics (4 methods)
+
+| Method | Description | Parameters |
+|--------|-------------|------------|
+| `stock_news` | Recent news with sentiment analysis | `symbol`: ticker or search terms, `search_type`: "stock" or "general" |
+| `stock_peers` | Industry peer comparison on key metrics | `symbol`: ticker |
+| `stock_screener` | Multi-criteria stock discovery | `symbol`: JSON criteria (e.g., `{"maxPE":20,"minMarketCap":1000000000}`) |
+| `stock_correlation` | Portfolio correlation analysis | `symbol`: comma-separated tickers (e.g., "AAPL,MSFT,GOOGL") |
+
+### Market & Economic (2 methods)
+
+| Method | Description | Parameters |
+|--------|-------------|------------|
+| `economic_indicators` | Comprehensive macro dashboard (GDP, unemployment, inflation, rates) | - |
+| `market_indices` | Major indices (S&P 500, NASDAQ, DOW, VIX) & sector performance | - |
+
+### FRED Economic Data (12 methods)
+
+| Method | Description | Parameters |
+|--------|-------------|------------|
+| `fred_series_search` | Search 800,000+ economic series | `symbol`: search terms (e.g., "unemployment") |
+| `fred_series_data` | Fetch specific series observations | `symbol`: series ID (e.g., "UNRATE") |
+| `fred_categories` | Browse economic data categories | `symbol`: category ID |
+| `fred_releases` | Economic calendar with release schedules | - |
+| `fred_vintage_data` | Historical data revision analysis | `symbol`: series ID |
+| `fred_tags` | Tag-based economic concept discovery | `symbol`: tag name |
+| `fred_regional_data` | Geographic economic analysis (state/MSA) | `symbol`: series ID |
+| `fred_sources` | Data source transparency & quality | `symbol`: source ID |
+| `fred_series_updates` | Recently updated indicators | - |
+| `fred_series_relationships` | Series metadata & connections | `symbol`: series ID |
+| `fred_maps_data` | Geographic economic data for mapping | `symbol`: series ID |
+
+---
+
+## Example Usage
+
+### Get Apple's company profile
+```
+method: stock_profile
+symbol: AAPL
 ```
 
-**Without API key**: Basic functionality works, but economic features are limited.
+### Search for unemployment data
+```
+method: fred_series_search
+symbol: unemployment rate
+```
+
+### Screen for value stocks
+```
+method: stock_screener
+symbol: {"maxPE": 15, "minDividendYield": 2, "minMarketCap": 10000000000}
+```
+
+### Analyze portfolio correlation
+```
+method: stock_correlation
+symbol: AAPL,MSFT,GOOGL,AMZN,TSLA
+```
+
+### Get financial news with sentiment
+```
+method: stock_news
+symbol: TSLA
+search_type: stock
+```
 
 ---
 
-## **Rate Limits & Guidelines**
+## Rate Limits
 
 ### Yahoo Finance
-- **Mobile User-Agent**: Uses mobile headers for reliable access
-- **Request Throttling**: Built-in delays between requests
-- **Error Handling**: Graceful handling of bot detection
+- Mobile User-Agent for reliable access
+- Built-in request throttling
+- Graceful bot detection handling
 
-### FRED API  
-- **120 requests/minute**: Automatic rate limiting compliance
-- **Batch Processing**: Efficient concurrent requests with delays
-- **Fallback Systems**: Yahoo Finance backup for treasury rates
-
----
-
-## **Data Coverage**
-
-### Stock Markets
-- **US Markets**: NYSE, NASDAQ (AAPL, TSLA, GOOGL, etc.)
-- **International**: Major global exchanges
-- **Asset Classes**: Stocks, ETFs, indices
-
-### Economic Data
-- **US Economic Indicators**: GDP, unemployment, inflation, etc.
-- **Federal Reserve Data**: Monetary policy, interest rates
-- **Regional Data**: State, county, metro area statistics
-- **Historical Data**: Decades of economic history with revisions
-
-### Financial Metrics
-- **Valuation**: P/E, EV/EBITDA, PEG ratios
-- **Performance**: Returns, volatility, beta
-- **Fundamentals**: Revenue, earnings, cash flow
-- **Market Data**: Price, volume, market cap
+### FRED API
+- 120 requests/minute (automatic compliance)
+- Efficient batch processing
+- Yahoo Finance fallback for treasury rates
 
 ---
 
-## **Use Cases**
+## Data Coverage
 
-### **Investment Analysis**
-- Company research and due diligence
-- Peer comparison and industry analysis
-- Economic context for investment decisions
-- Portfolio correlation and risk analysis
+**Stock Markets**: NYSE, NASDAQ, major global exchanges (stocks, ETFs, indices)
 
-### **Economic Research**
-- Macro economic analysis and forecasting
-- Regional economic development studies
-- Historical data analysis with revisions
-- Policy impact assessment
+**Economic Data**: GDP, unemployment, inflation, interest rates, regional statistics, historical revisions
 
-### **Financial Planning**
-- Market condition monitoring
-- Economic indicator tracking
-- Sector rotation strategies
-- Risk management and diversification
-
-### **Data Discovery**
-- Economic data exploration via tags
-- Company intelligence gathering
-- News monitoring with sentiment
-- Technical analysis and screening
+**Financial Metrics**: Valuation (P/E, EV/EBITDA), performance (returns, volatility, beta), fundamentals (revenue, earnings, cash flow)
 
 ---
 
-**Disclaimer**: This is an unofficial tool. Please respect data providers' terms of service. Data is for informational purposes only and should not be used as the sole basis for investment decisions.
+**Disclaimer**: Unofficial tool. Data is for informational purposes only and should not be used as the sole basis for investment decisions.

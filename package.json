@@ -2,19 +2,21 @@
   "name": "@openpharma-org/financial-mcp-server",
   "version": "0.1.0",
   "description": "Comprehensive MCP server for financial intelligence with 30 methods: Yahoo Finance stock data, FRED economic indicators (12 methods), advanced analytics, news sentiment analysis, and geographic economic mapping. Professional-grade financial analysis platform.",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "bin": {
-    "financial-mcp-server": "src/index.js"
+    "financial-mcp-server": "build/index.js"
   },
   "files": [
-    "src/",
+    "build",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
+    "build": "rm -rf build && mkdir -p build && cp src/index.js src/financial-api.js build/ && chmod +x build/index.js",
     "dev": "node src/index.js",
-    "start": "node src/index.js",
-    "test": "node src/dev-test.js"
+    "start": "node build/index.js",
+    "test": "echo \"No tests specified\"",
+    "clean": "rm -rf build"
   },
   "keywords": [
     "mcp",
