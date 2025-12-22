@@ -2,7 +2,7 @@
 
 A comprehensive **Model Context Protocol (MCP) server** that provides professional-grade access to financial and economic data through Yahoo Finance and Federal Reserve Economic Data (FRED).
 
-## Configuration
+## Usage
 
 ```json
 {
